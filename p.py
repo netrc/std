@@ -9,12 +9,24 @@ import logging
 def setLog(l):
 	logging.basicConfig(level=l)
 
+def someFunc():
+	logging.debug("someFunc")
+	
+class PClass(object):
+	def __init__(self, x):
+		self.x = x
+
+	def __str__(self):
+		return "PClass(" + str(self.x) + ")"
+
 
 
 # Main
 def main():
 	# whatever
 	logging.debug("main")
+	p = PClass(9)
+	print p
 
 
 if __name__ == '__main__':
