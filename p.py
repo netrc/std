@@ -5,14 +5,14 @@ import sys
 import logging
 import unittest
 
-
-# can define funcs for module "p"
+#### Functions for this module/main
 def setLog(l):
 	logging.basicConfig(level=l)
 
 def someFunc():
 	logging.debug("someFunc")
 	
+####
 class PClass(object):
 	def __init__(self, x):
 		self.x = x
@@ -23,7 +23,7 @@ class PClass(object):
 	def value(self):
 		return self.x
 
-# Test Code
+#### Test Code
 class PUnitTest(unittest.TestCase):
 	def setUp(self):
 		# can do one time setup here
@@ -32,7 +32,7 @@ class PUnitTest(unittest.TestCase):
 	def test_obj_is_ok(self):
 		self.assertEqual( 2, self.p.value() )
 
-# Main
+#### Main
 def main():
 	# whatever
 	logging.debug("main")
@@ -52,7 +52,8 @@ if __name__ == '__main__':
 					setLog(logging.DEBUG)
 				elif (c=='t'):
 					runFunc = unittest.main
-					sys.argv.remove(sys.argv[1]) # add unittest args after 
+					sys.argv.remove(sys.argv[1]) 
+					# other args will be parsed by unittest.main
 					break
 				elif (c=='-'):
 					pass # ignore
