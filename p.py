@@ -38,6 +38,10 @@ def main():
 	logging.debug("main")
 	p = PClass(9)
 	print p
+	# to read stdin or all files on argv
+	# import fileinput
+	# for line in fileinput.input()
+	#	print line
 
 
 if __name__ == '__main__':
