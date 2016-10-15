@@ -41,9 +41,10 @@ echo {A..Z}{0..9}   # A0 A1... B0 B1... ..Z9
 [[ -a filenameExists ]]
 [[ -f regularFile ]]
 [[ -d directiryExists ]]
-[[ -s fileIsBiggerThanZero ]]
-[[ -z isThisStringZeroLength ]]
-[[ string1 -eq string2 ]]
+[[ -s fileIsBiggerThanZero ]] 
+[[ -z isThisStringZeroLength ]] && echo zero length string
+[[ ! string1 = string2 ]]  && echo yes
+[[ 2 -eq 2 ]]  && echo yes	# -eq -ne -gt -lt
 
 
 function aFunc() {
