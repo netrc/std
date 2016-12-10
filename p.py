@@ -4,6 +4,7 @@ import os
 import sys
 import logging
 import unittest
+from optparse import OptionParser
 
 #### Functions for this module/main
 def setLog(l):
@@ -12,7 +13,7 @@ def setLog(l):
 def someFunc():
 	logging.debug("someFunc")
 	
-####
+#### A Class
 class PClass(object):
 	def __init__(self, x):
 		self.x = x
@@ -30,11 +31,11 @@ class PUnitTest(unittest.TestCase):
 		self.p = PClass(2)
 
 	def test_obj_is_ok(self):
+		logging.debug("test_obj_is_ok")
 		self.assertEqual( 2, self.p.value() )
 
 #### Main
 def main():
-	# whatever
 	logging.debug("main")
 	p = PClass(9)
 	print p
@@ -48,24 +49,20 @@ if __name__ == '__main__':
 	# just supports stdin, and set of option letters 
 	pname = sys.argv[0]
 
+	op = OptionParser(usage="%prog [-d] [-t]", version="%prog 0.5")
+	op.add_option("-d", "--debug", dest="debugFlag", action="store_true", default=False)
+	op.add_option("-t", "--test", dest="doTest", action="store_true", default=False)
+	(options, args) = op.parse_args()
+	
+	print "args: ", len(args)
 	runFunc = main	
-	if (len(sys.argv)>1):
-			for c in sys.argv[1]:
-				if (c == 'd'):
-					debug=1
-					setLog(logging.DEBUG)
-				elif (c=='t'):
-					runFunc = unittest.main
-					sys.argv.remove(sys.argv[1]) 
-					# other args will be parsed by unittest.main
-					break
-				elif (c=='-'):
-					pass # ignore
-				else:
-					logging.error("bad option: %c", c)
-					print("usage: [-d]   - debug")
-					print("usage: [-t  [unittest args]  - test")
-					sys.exit(-1)
+	if (options.debugFlag):
+		setLog(logging.DEBUG)
+	if (options.doTest):
+		print('dotest')
+		runFunc = unittest.main
+		del sys.argv[1:]
+		# other args will be parsed by unittest.main
 
 	# or if (len(sys.argv)==3):
 	#		fname=sys.argv[2]
