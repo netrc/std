@@ -54,12 +54,10 @@ if __name__ == '__main__':
 	op.add_option("-t", "--test", dest="doTest", action="store_true", default=False)
 	(options, args) = op.parse_args()
 	
-	print "args: ", len(args)
 	runFunc = main	
 	if (options.debugFlag):
 		setLog(logging.DEBUG)
 	if (options.doTest):
-		print('dotest')
 		runFunc = unittest.main
 		del sys.argv[1:]
 		# other args will be parsed by unittest.main
