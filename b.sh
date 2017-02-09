@@ -1,5 +1,8 @@
 # Some reminders of semantics - http://linux.die.net/man/1/bash
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROG=$(basename ${0})
+
 echo $*
 echo "$*"      # a single argument with all the args
 echo $@
