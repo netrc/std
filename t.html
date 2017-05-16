@@ -1,19 +1,27 @@
 <!DOCTYPE HTML>
 <html>
 
-<head>
-  <title>this title </title>
+	<head>
+  <meta charset="utf-8">
+  <meta name="description" content="simple description">
+  <meta name="author" content="netrc">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Simple title </title>
 
   <meta name="author" content="netrc">
 
   <style type="text/css">
     body {
-        background: #776655;
+        background: #446655; /* fallback for old browsers */
+        background: #16222A; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #16222A , #3A6073); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #16222A , #3A6073); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+*/
     }
     body, html {
       font-family: sans-serif;
+      color: #99BBBB;
     }
-
   </style>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -21,16 +29,23 @@
 
 <body>
 
-<p class="intro">
-Simple html intro
+<h2> Hello.... </h2>
+<p class="intro" id="intro">
 </p>
-
-<script type="text/javascript">
-function runFunction() {
-	console.log("loaded");
+	
+	
+<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+<script content="text/javascript">
+function initPage(){
+    var intro = $("#intro");
+    intro.html("simple html, jquery");
 }
-$(document).ready(runFunction);
+
+$(document).ready(initPage);      //named func so you can debug it
 </script>
+
+
+
 
 </body>
 </html>
