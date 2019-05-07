@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+  <meta charset="utf-8">
+  <meta name="description" content="simple description">
+  <meta name="author" content="netrc">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Simple title </title>
+
+  <meta name="author" content="netrc">
+
+  <style type="text/css">
+    body {
+        background: #446655; /* fallback for old browsers */
+        background: #16222A; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #16222A , #3A6073); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #16222A , #3A6073); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+*/
+    }
+    body, html {
+      font-family: sans-serif;
+      color: #99BBBB;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+
+<div id="app">
+<h2> {{ heading }} </h2>
+<p class="intro" id="intro">
+  <button v-on:click="inc">inc</button>  {{counter}}
+</p>
+</div>
+	
+	
+<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+<script content="text/javascript">
+// globals
+var app;
+
+  function initPage(){
+    
+    app = new Vue({
+      el: '#app',
+      data: {
+        heading: 'Hello...',
+        counter: 0
+      },
+      methods: {
+        inc: function() {
+          this.counter += 1;
+        }
+      }
+    });
+  }
+
+  // wait if needed
+  if ( document.readyState !== 'loading' ) {
+    console.log( 'document is already ready, just execute code here' );
+    initPage();
+  } else {
+    document.addEventListener('DOMContentLoaded', initPage );
+  }
+</script>
+
+
+
+
+</body>
+</html>
