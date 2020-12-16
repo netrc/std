@@ -3,6 +3,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROG=$(basename ${0})
 
+echo $#         # num of params
 echo $*
 echo "$*"      # a single argument with all the args
 echo $@
@@ -14,26 +15,25 @@ echo $SECONDS       # seconds since running of this shell
 
 # Arithmetic expansion
 a=$((3 + 4)) ; echo $a
-b=$((a++ * 3)) ; echo $b    # 21,  a is now 8
+b=$((a++ * 3)) ; echo $b    # !! note no $a just a  # 21,  a is now 8
 # ~ bitwise negation, <<,>> bitwise shift, & ^ |  bitwise and, xor, or
 
-z=${varName:-10}    # use 10 if unset
+z=${varName:-10}    # use 10 if unset  # note '-' !
                     # ! no spaces before/after "=" (otherwise looks like a cmd)
 echo ${varName:=10}      # use 10 if unset *and* set varName
 
+echo ${var:2:5}  # $var chars 2 through 5 (or to end if :5 absent)
 echo ${#var}     # length of $var value
 
-v[2]=foo      # indexed array
+v=(foo xyz baz)   # simple indexed array
+v[1]=foo      # indexed array
 w[bar]=baz    # associative array
 echo arrays ${v[2]}  ${w[bar]}     # got to use braces
-v[3]=goo
 echo "${v[*]}"      # one word
 echo "${v[@]}"      # separate words
 echo ${!v[@]}       # the keys
 
 v=$(date)       # command substitution
-
-echo $#         # num of params
 
 # Brace Expansion - generate arbitrary strings....
 echo a{1,2,3}b      # a1b a2b a3b

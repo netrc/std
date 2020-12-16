@@ -1,4 +1,17 @@
 
-set -o vi
+# things set in preinstalled .bashrc /etc/profile /etc/bash.bashrc
+unalias ls
+unset command_not_found_handle    # from /etc/bash.bashrc
 
-export LS_COLORS="rs=0:di=01;34:ln=04;90:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01:*.tar=01;90:*.tgz=01;90:*.arj=01;90:*.taz=01;90:*.lzh=01;90:*.lzma=01;90:*.tlz=01;90:*.txz=01;90:*.zip=01;90:*.z=01;90:*.Z=01;90:*.dz=01;90:*.gz=01;90:*.lz=01;90:*.xz=01;90:*.bz2=01;90:*.tbz=01;90:*.tbz2=01;90:*.bz=01;90:*.tz=01;90:*.deb=01;90:*.rpm=01;90:*.jar=01;90:*.rar=01;90:*.ace=01;90:*.zoo=01;90:*.cpio=01;90:*.7z=01;90:*.rz=01;90:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.oga=01;36:*.spx=01;36:*.xspf=01;36:"
+# my favorites
+set -o vi
+export PS1="$ "
+export EDITOR=vi
+cd ${HOME}
+
+# apt-get install environment modules locally (includes tclsh)
+[ -d /usr/share/modules/init ] && {
+  source /usr/share/modules/init/bash
+  module use /rc/richard/lib/modules   # prepends
+  module load Richard   # /rc/bin : /rc/richard/bin
+}
