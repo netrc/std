@@ -8,4 +8,4 @@ Each file does essentially:
 * other simple libraries
 * some couple of standard idioms
 
-...
+---
